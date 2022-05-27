@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Add student</title>
+</head>
+<body>
+<div layout:fragment="content" class="card m-5">
+        <div class="card-header d-flex align-items-center justify-content-between pb-3 pt-3">
+            <h5 class="float-start"><i class="fa-solid fa-user-plus"></i> Add student :</h5>
+        </div>
+    <div class="card-body">
+        <form th:object="${student}" method="post" th:action="@{/admin/save}" class="needs-validation row row-cols-3" novalidate>
+            <input type="hidden" name="id" th:field="*{id}" th:value="*{id}" required>
+            <div class="mb-3 col">
+                <label for="studentName" class="form-label">Name</label>
+                <input type="text" class="form-control" th:class="${#fields.hasErrors('name')}? 'form-control is-invalid' : 'form-control' " id="studentName" name="name" th:field="*{name}" th:value="*{name}" required>
+                <div class="invalid-feedback" th:errors="${student.name}"></div>
+            </div>
+            <div class="mb-3 col">
+                <label for="studentLastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" th:class="${#fields.hasErrors('lastName')}? 'form-control is-invalid' : 'form-control' " id="studentLastName" name="lastName" th:field="*{lastName}" th:value="*{lastName}" required>
+                <div class="invalid-feedback" th:errors="${student.lastName}"></div>
+            </div>
+            <div class="mb-3 col">
+                <label for="studentEmail" class="form-label">Email</label>
+                <input type="text" class="form-control" th:class="${#fields.hasErrors('email')}? 'form-control is-invalid' : 'form-control' " id="studentEmail" name="email" th:field="*{email}" th:value="*{email}" required>
+                <div class="invalid-feedback" th:errors="${student.email}"></div>
+            </div>
+            <div class="mb-3 col">
+                <label for="studentDateOfBirth" class="form-label">Date of birth</label>
+                <input type="date" class="form-control" th:class="${#fields.hasErrors('dateOfBirth')}? 'form-control is-invalid' : 'form-control' " id="studentDateOfBirth" name="dateOfBirth" th:field="*{dateOfBirth}" required>
+                <div class="invalid-feedback">
+                    Please select a date.
+                </div>
+            </div>
+            <div class="mb-3 col">
+                <label for="studentGender" class="form-label">Gender</label>
+                <select th:class="${#fields.hasErrors('gender')}? 'form-select is-invalid' : 'form-select' " name="gender" id="studentGender" th:field="*{gender}" required>
+                    <option selected disabled value="">Choose gender</option>
+                    <option value="MALE">MALE</option>
+                    <option value="FEMALE">FEMALE</option>
+                </select>
+                <div class="invalid-feedback">
+                    Please select a gender.
+                </div>
+            </div>
+            <div class="mb-3 col-12">
+                <input class="form-check-input" type="checkbox" name="enRegle" id="studentEnRegle" th:checked="*{enRegle}">
+                <label class="form-check-label" for="studentEnRegle">
+                    Student is en regle
+                </label>
+            </div>
+            <button type="submit" class="ms-3 btn btn-primary col-auto"><i class="fa-solid fa-user-plus"></i> Add student</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

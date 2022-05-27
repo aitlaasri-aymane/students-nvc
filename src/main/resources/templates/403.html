@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="template"
+>
+<head>
+  <meta charset="UTF-8">
+  <title>Access Denied</title>
+</head>
+<body>
+<div layout:fragment="content" class="card text-white bg-danger m-5">
+    <div class="card-header">Access Denied</div>
+    <div class="card-body">
+      <h5 class="card-title">Not Authorized to view this page</h5>
+      <p class="card-text">Please make sure you're logged in and that you have the correct permissions to view this page !</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
